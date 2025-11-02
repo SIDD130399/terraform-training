@@ -25,7 +25,7 @@
 data "akamai_property_rules_builder" "my_default_rule" {
   rules_v2023_01_05 {
     name      = "default"
-    is_secure = false
+    is_secure = true
     comments  = <<-EOT
       The behaviors in the default rule apply to all requests for the property hostnames unless another rule overrides these settings.
     EOT
@@ -75,8 +75,8 @@ data "akamai_property_rules_builder" "compress_text_content" {
 }
 
 
-resource "akamai_property" "my_property" {
-  name          = "sikhande_tf_property"
+resource "akamai_property" "my_property3" {
+  name          = "sikhande_tftesting3_property"
   product_id    = "prd_SPM"
   contract_id   = "1-1NC95D"
   group_id      = "19298"
@@ -84,8 +84,8 @@ resource "akamai_property" "my_property" {
   version_notes = "Initial version created using TF"
   rules         = data.akamai_property_rules_builder.my_default_rule.json
   hostnames {
-    cname_from             = "sikhandetftrain.prlab.lol"
-    cname_to               = "sikhandetftraining.prlab.lol.edgekey.net"
+    cname_from             = "sikhandetftesting3.xyz.lol"
+    cname_to               = "sikhandetftesting3.xyz.lol.edgekey.net"
     cert_provisioning_type = "DEFAULT"
   }
 }
